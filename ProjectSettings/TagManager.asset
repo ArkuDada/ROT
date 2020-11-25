@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - clickable
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Card
+  - Menu
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 860306623
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: GameObject
+    uniqueID: 1034830003
+    locked: 0
+  - name: UI
+    uniqueID: 16188983
+    locked: 0
+  - name: Card
+    uniqueID: 3737397447
+    locked: 0
+  - name: Menu
+    uniqueID: 268349923
+    locked: 0
