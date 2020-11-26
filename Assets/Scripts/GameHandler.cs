@@ -46,7 +46,8 @@ public class GameHandler : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Menu.SetActive(true);
-            //Main.SetActive(false);
+            Main.SetActive(false);
+            //Main.transform.Find("Card").gameObject.SetActive(false);
             textbox.updateText("Paused");
         }
         checkThink();
@@ -158,7 +159,8 @@ public class GameHandler : MonoBehaviour
 
     public void newGame()
     {
-        //Main.SetActive(true);
+        Main.SetActive(true);
+        // Main.transform.Find("Card").gameObject.SetActive(true);
         deck = 0;
         card = 0;
         speechCounter = 0;
@@ -179,7 +181,8 @@ public class GameHandler : MonoBehaviour
 
     public void resume()
     {
-        //Main.SetActive(true);
+        Main.SetActive(true);
+        //Main.transform.Find("Card").gameObject.SetActive(true);
         Menu.SetActive(false);
         textbox.updateText(speech[speechCounter]);
     }
