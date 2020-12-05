@@ -128,7 +128,7 @@ public class Card : MonoBehaviour
         if (posX >= detectLine)
         {
             Manager.Instance.Decide = 1;
-            sprite.color = new Color(0, 1, 0, 1);
+            sprite.color = new Color(0, 1f, .5f, 1);
         }
         else if (posX <= -detectLine)
         {
