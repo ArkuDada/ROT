@@ -22,7 +22,6 @@ public class PopularityBar : MonoBehaviour
         dot = transform.Find("Dot");
         dotsize = 0f;
         dot.localScale = new Vector3(dotsize, dotsize);
-
     }
 
     public void resetBar()
@@ -34,30 +33,24 @@ public class PopularityBar : MonoBehaviour
     // Update is called once per frame
     public void updateSize(int change)
     {
-        if (change != 0)
-        {
-            barcontent += change / 20f;
-            bar.localScale = new Vector3(barcontent, 1f);
-        }
-
+        barcontent = change / 20f;
+        bar.localScale = new Vector3(barcontent, 1f);
     }
 
-    public void updateDotSize(int change) 
+    public void updateDotSize(int change)
     {
         change = Math.Abs(change);
         if (change == 0)
         {
             dot.localScale = new Vector3(0f, 0f);
-        } 
+        }
         else if (change == 1)
         {
             dot.localScale = new Vector3(.4f, .4f);
-        } 
-        else if (change == 2) 
+        }
+        else if (change == 2)
         {
             dot.localScale = new Vector3(.7f, .7f);
         }
-
-
     }
 }

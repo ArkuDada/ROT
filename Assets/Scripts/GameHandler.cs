@@ -47,11 +47,12 @@ public class GameHandler : MonoBehaviour
         {
             Menu.SetActive(true);
             Main.SetActive(false);
-            //Main.transform.Find("Card").gameObject.SetActive(false);
+            //Main.transform.Find("Card").gameObject.SetActive(false)
             textbox.updateText("Paused");
         }
         checkThink();
         checkDecision();
+        checkEnd();
     }
    
     void checkThink() {        
@@ -154,6 +155,14 @@ public class GameHandler : MonoBehaviour
         else { 
             newGame();
             return false;
+        }
+    }
+
+    void checkEnd()
+    {
+        if (Manager.Instance.endStatus != 0)
+        {
+            UnityEngine.Debug.Log("End" + Manager.Instance.endStatus);
         }
     }
 

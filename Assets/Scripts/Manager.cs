@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
     public int Decide = -1;
     public int Think = -1;
     public int[] Status = {0,0,0};
+    public int endStatus = -1;
     public string[] Dialogue;
 
     private void Awake() 

@@ -22,11 +22,10 @@ public class MilitaryBar : MonoBehaviour
 
         dot = transform.Find("Dot");
         dotsize = 0f;
-        dot.localScale = new Vector3(dotsize,dotsize);
-
+        dot.localScale = new Vector3(dotsize, dotsize);
     }
 
-    public void resetBar() 
+    public void resetBar()
     {
         barcontent = .5f;
         bar.localScale = new Vector3(.5f, 1f);
@@ -34,13 +33,10 @@ public class MilitaryBar : MonoBehaviour
 
     public void updateSize(int change)
     {
-        if (change != 0)
-        {
-            barcontent += change / 20f;
-            bar.localScale = new Vector3(barcontent, 1f);
-        }
-
+        barcontent = change / 20f;
+        bar.localScale = new Vector3(barcontent, 1f);
     }
+
     public void updateDotSize(int change)
     {
         change = Math.Abs(change);
@@ -56,6 +52,5 @@ public class MilitaryBar : MonoBehaviour
         {
             dot.localScale = new Vector3(.7f, .7f);
         }
-
     }
 }
