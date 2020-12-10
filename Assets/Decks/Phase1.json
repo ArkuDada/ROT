@@ -1,0 +1,452 @@
+﻿{
+  "CardAmount": 14,
+  "Cards": [
+    {
+      "Team": 0,
+      "Name": "Army",
+      "Require": 0,
+      "Picture": 19,
+      "Speech": [
+        "Sir, how can we take control of the citizens?"
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Let's make a song and put it on every TV's channel!",
+          "Outcome": [
+            0,
+            0,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "Put whoever oppose us to jail. we are big boss here!",
+          "Outcome": [
+            -1,
+            0,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Opposition",
+      "Require": 0,
+      "Picture": 4,
+      "Speech": [
+        " We need to bring back the democracy.",
+        "You have no right here!"
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "We will give what you want after we finish our work.",
+          "Outcome": [
+            1,
+            0,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "You don't want to be our enemies.",
+          "Outcome": [
+            0,
+            1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Journalist",
+      "Require": 0,
+      "Picture": 10,
+      "Speech": [
+        "Now the authority is yours.",
+        "What are you going to do?"
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "we will do anything for people's security and well being.",
+          "Outcome": [
+            1,
+            -1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": " we are soldier. that's that, ask nothing more.",
+          "Outcome": [
+            -1,
+            1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Army",
+      "Require": 0,
+      "Picture": 16,
+      "Speech": [
+        "Look at all these taxes.",
+        "General, we are rich!!"
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Buy the submarine, tank, everything we want!",
+          "Outcome": [
+            -1,
+            3,
+            -1
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "This is people's taxes.",
+          "Outcome": [
+            2,
+            -1,
+            1
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Opposition",
+      "Require": 0,
+      "Picture": 3,
+      "Speech": [
+        "Your taxes management is suspicious.",
+        "We need an investigation."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Give them fake budget report.",
+          "Outcome": [
+            0,
+            1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "Give them real budget report.",
+          "Outcome": [
+            1,
+            -1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 1
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Opposition",
+      "Require": 0,
+      "Picture": 3,
+      "Speech": [
+        "This report is all fake. You are committing crime."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": " We have your corruption evidence too, do i have to say what you should do?",
+          "Outcome": [
+            0,
+            0,
+            -1
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "We are the Law.",
+          "Outcome": [
+            -2,
+            2,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Army",
+      "Require": 0,
+      "Picture": 16,
+      "Speech": [
+        "We need to build our political party",
+        "We will be politician after this coup ends."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "We are soldier.",
+          "Outcome": [
+            2,
+            -2,
+            0
+          ],
+          "Important": 1,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "Let's be governor.",
+          "Outcome": [
+            -2,
+            2,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Journalist",
+      "Require": 0,
+      "Picture": 9,
+      "Speech": [
+        "This is the time to show your standpoint.",
+        "Which country is the side of yours."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Great Empire of Zhong gou.",
+          "Outcome": [
+            0,
+            0,
+            0
+          ],
+          "Important": -1,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "United Nation of Americano.",
+          "Outcome": [
+            0,
+            0,
+            0
+          ],
+          "Important": -2,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 1,
+      "Name": "Xi jinpooh",
+      "Require": 0,
+      "Picture": 2,
+      "Speech": [
+        "Your decision are outstanding.",
+        "It would be pleasure if you let us take care of RoT durian industrial."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "30% to me and we are done.",
+          "Outcome": [
+            -2,
+            1,
+            -3
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "We can take care of it.",
+          "Outcome": [
+            1,
+            0,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 2,
+      "Name": "Leon F. kenedy",
+      "Require": 0,
+      "Picture": 1,
+      "Speech": [
+        "Your decision are outstanding.",
+        "We looking forward to sattle our production here."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "I'm looking forward to it.",
+          "Outcome": [
+            2,
+            0,
+            2
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "Let me hold big part your stock and we can talk later.",
+          "Outcome": [
+            1,
+            1,
+            2
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Army",
+      "Require": 0,
+      "Picture": 17,
+      "Speech": [
+        "Election will occur soon!",
+        "We should form political party now."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Let's get it done!",
+          "Outcome": [
+            -2,
+            1,
+            -3
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "We are no politician!",
+          "Outcome": [
+            1,
+            0,
+            0
+          ],
+          "Important": 1,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Journalist",
+      "Require": 0,
+      "Picture": 11,
+      "Speech": [
+        "The election is coming soon.",
+        " We heard you plan to participate this time."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Yes, and we will win this election.",
+          "Outcome": [
+            -1,
+            2,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "We are soldier, we leave when the duty is done.",
+          "Outcome": [
+            1,
+            -1,
+            0
+          ],
+          "Important": 1,
+          "Skip": 0
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Journalist",
+      "Require": 3,
+      "Picture": 11,
+      "Speech": [
+        "1 year have passed as you promised.",
+        "The election will occur",
+        "Nothing can stop it."
+      ],
+      "Decisions": [
+        {
+          "SwipeText": "Our duty here is done.\nPeople will regain full authority as promised.",
+          "Outcome": [
+            0,
+            0,
+            0
+          ],
+          "Important": -3,
+          "Skip": 1
+        },
+        {
+          "SwipeText": "Country is not yet in order. Our time in authority will expand until we see appropriate.",
+          "Outcome": [
+            -2,
+            3,
+            0
+          ],
+          "Important": 0,
+          "Skip": 1
+        }
+      ]
+    },
+    {
+      "Team": 0,
+      "Name": "Opposition",
+      "Require": 0,
+      "Picture": 5,
+      "Speech": [
+        "You are cheating!!",
+        "All the election comittee are on your side!"
+      ],
+      "Decisions": [
+        {
+          "SwipeText": " You were no match for us.",
+          "Outcome": [
+            -2,
+            1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        },
+        {
+          "SwipeText": "We are the governor.",
+          "Outcome": [
+            -2,
+            1,
+            0
+          ],
+          "Important": 0,
+          "Skip": 0
+        }
+      ]
+    }
+  ]
+}

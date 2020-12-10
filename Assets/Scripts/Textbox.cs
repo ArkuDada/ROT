@@ -19,7 +19,6 @@ public class Textbox : MonoBehaviour
         txt.GetComponent<UnityEngine.UI.Text>().fontSize = 12;
         txt.GetComponent<UnityEngine.UI.Text>().font = fonts[1];
     }
-
     public void updateText(string dialouge)
     {
         txt.GetComponent<UnityEngine.UI.Text>().text = dialouge;

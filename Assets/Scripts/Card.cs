@@ -43,18 +43,18 @@ public class Card : MonoBehaviour
 
             if (checkPos())
             {             
-                this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 0, 0);
+                this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, -0.5f, 0);
             }
             else
             {
                 
                 if (mousePos.x >= detectLine || objectPos.x >= detectLine)
                 {
-                    this.gameObject.transform.localPosition = new Vector3(detectLine, 0, 0);
+                    this.gameObject.transform.localPosition = new Vector3(detectLine, -0.5f, 0);
                 }
                 else if (mousePos.x <= -detectLine || objectPos.x <= -detectLine)
                 {
-                    this.gameObject.transform.localPosition = new Vector3(-detectLine, 0, 0);
+                    this.gameObject.transform.localPosition = new Vector3(-detectLine, -0.5f, 0);
                 }
             }
         }
@@ -157,13 +157,13 @@ public class Card : MonoBehaviour
             }
         
         }
-        this.gameObject.transform.localPosition = new Vector3(popPos, 0, 0);
+        this.gameObject.transform.localPosition = new Vector3(popPos, -0.5f, 0);
     }
 
     public SpriteRenderer face;
     public Sprite[] sprites;
     public void ChangeSprite(int newFace)
     {
-        face.sprite = sprites[newFace - 1];
+        face.sprite = sprites[newFace-1];
     }
 }

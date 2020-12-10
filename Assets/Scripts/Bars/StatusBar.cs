@@ -19,23 +19,35 @@ public class StatusBar : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            Status[i] = updateZero(Status[i],Manager.Instance.Status[i]);
+            Status[i] = updateZero(Status[i], Manager.Instance.Status[i]);
         }
-        
+
         if (Status[0] <= 0)
         {
             Manager.Instance.endStatus = 1;
         }
-        else if (Status[1] <= 0)
+        else if (Status[0] >= 20)
         {
             Manager.Instance.endStatus = 2;
         }
-        else if (Status[2] <= 0)
+        else if (Status[1] <= 0)
         {
             Manager.Instance.endStatus = 3;
         }
+        else if (Status[1] >= 20)
+        {
+            Manager.Instance.endStatus = 4;
+        }
+        else if (Status[2] <= 0)
+        {
+            Manager.Instance.endStatus = 5;
+        }
+        else if (Status[2] >= 20)
+        {
+            Manager.Instance.endStatus = 6;
+        }
     }
-    
+
     public void resetBar()
     {
         popularityBar.resetBar();
@@ -59,7 +71,7 @@ public class StatusBar : MonoBehaviour
         economyBar.updateDotSize(Manager.Instance.Status[2]);
     }
 
-    private int updateZero(int input ,int output)
+    private int updateZero(int input, int output)
     {
         if (input + output < 0)
         {

@@ -16,7 +16,7 @@ TagManager:
   - 
   - Card
   - Menu
-  - 
+  - Background
   - 
   - 
   - 
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: Menu
     uniqueID: 268349923
+    locked: 0
+  - name: New Layer
+    uniqueID: 3956253557
     locked: 0

@@ -46,11 +46,15 @@ public class MilitaryBar : MonoBehaviour
         }
         else if (change == 1)
         {
-            dot.localScale = new Vector3(.4f, .4f);
+            dot.localScale = new Vector3(.85f, .85f);
         }
         else if (change == 2)
         {
-            dot.localScale = new Vector3(.7f, .7f);
+            dot.localScale = new Vector3(1.25f, 1.25f);
+        }
+        else if (change == 3)
+        {
+            dot.localScale = new Vector3( 1.75f, 1.75f);
         }
     }
 }

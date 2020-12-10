@@ -10,30 +10,38 @@ public class GameHandler : MonoBehaviour
     public Camera cam;
     public GameObject Main;
     public GameObject Menu;
+    public GameObject EndScreen;
     public int deck = 0;
     public int card = 0;
+    public int cardAmount;
 
+    public int playerTeam = 0;
     private int decision;
     private int think;
     private bool displayThink;
+    public int importantCount = 0;
 
+    private int skip = 0;
+    public string name;
     public string[] speech;
     public int speechCounter = 0;
     public int dialogueAmont;
 
     private int spriteIndex;
-   
-
+    
+    public int playableDeck;
     private CardData cardData;
     [SerializeField] private StatusBar statusBar;
+    [SerializeField] private CharacterName characterName;
     [SerializeField] private Textbox textbox;
     [SerializeField] private Card cardObject;
     [SerializeField] private AudioPlayer AudioPlayer;
 
     void Start()
     {
-        cardData = JsonUtility.FromJson<CardData>(AllCardData.text);
-        speech = cardData.Decks[deck].Cards[card].Speech;
+        cardData = JsonUtility.FromJson<CardData>(AllCardData[deck].text);
+        cardAmount = cardData.CardAmount;
+        speech = cardData.Cards[card].Speech;
         Manager.Instance.Decide = -1;
         Manager.Instance.Think = -1;
         textbox.updateText("RoT v0.0.1c");
@@ -41,6 +49,7 @@ public class GameHandler : MonoBehaviour
         string testString = JsonUtility.ToJson(cardData);
         Debug.Log(testString);
     }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -50,33 +59,36 @@ public class GameHandler : MonoBehaviour
             //Main.transform.Find("Card").gameObject.SetActive(false)
             textbox.updateText("Paused");
         }
+
         checkThink();
         checkDecision();
         checkEnd();
     }
-   
-    void checkThink() {        
-        if (displayThink) {
+
+    void checkThink()
+    {
+        if (dialogueAmont == speechCounter)
+        {
             think = Manager.Instance.Think;
             if (think != -1)
             {
-                Manager.Instance.Status = cardData.Decks[deck].Cards[card].Decisions[think].Outcome;
-                textbox.updateText(cardData.Decks[deck].Cards[card].Decisions[think].SwipeText);
+                Manager.Instance.Status = cardData.Cards[card].Decisions[think].Outcome;
+                textbox.updateText(cardData.Cards[card].Decisions[think].SwipeText);
                 statusBar.updateThink();
             }
             else
             {
-                Manager.Instance.Status = new int[] { 0, 0, 0 };
-                textbox.updateText(speech[dialogueAmont-1]);
+                textbox.updateText(speech[dialogueAmont - 1]);
+
+                Manager.Instance.Status = new int[] {0, 0, 0};
                 statusBar.updateThink();
             }
         }
         else
         {
-            Manager.Instance.Status = new int[] { 0, 0, 0 };          
+            Manager.Instance.Status = new int[] {0, 0, 0};
             statusBar.updateThink();
         }
-
     }
 
     void checkDecision()
@@ -84,45 +96,79 @@ public class GameHandler : MonoBehaviour
         decision = Manager.Instance.Decide;
         if (decision != -1)
         {
-            if (checkDeck())
+            if (checkCard())
             {
                 if (checkDialogue())
                 {
-                    Manager.Instance.Status = cardData.Decks[deck].Cards[card].Decisions[decision].Outcome;
+                    Manager.Instance.Status = cardData.Cards[card].Decisions[decision].Outcome;
                     statusBar.updateBar();
-                    displayThink = false;
-                    getNewCard();
-                }
-                if (speechCounter == dialogueAmont)
-                {
-                    displayThink = true;
-                }
-                Debug.Log(speechCounter);
+                    importantDecision(cardData.Cards[card].Decisions[decision].Important);
+
+
+                    skip = cardData.Cards[card].Decisions[decision].Skip;
+                    for (int i = 0; skip >= i; skip--)
+                    {
+                        getNewCard();
+                    }
+                } 
             }
+
+            Debug.Log(speechCounter);
             Manager.Instance.Decide = -1;
+        }
+    }
+
+    void importantDecision(int importantChoice)
+    {
+        if (importantChoice > 0)
+        {
+            importantCount += importantChoice;
+        }
+        else if (importantChoice == -1)
+        {
+            playerTeam = 1;
+        }
+        else if (importantChoice == -2)
+        {
+            playerTeam = 2;
+        }
+        else if (importantChoice == -3)
+        {
+            Manager.Instance.endStatus = 7;
         }
     }
 
     void getNewCard()
     {
         card++;
-        speech = cardData.Decks[deck].Cards[card].Speech;
-        dialogueAmont = arrayCount(speech);
-        spriteIndex = cardData.Decks[deck].Cards[card].Picture;
+        speech = cardData.Cards[card].Speech;
+        name = cardData.Cards[card].Name;
+        spriteIndex = cardData.Cards[card].Picture;
+        
         cardObject.ChangeSprite(spriteIndex);
+        characterName.updateText(name);
         textbox.updateText(speech[0]);
         AudioPlayer.playSound(1);
+        dialogueAmont = arrayCount(speech);
         speechCounter = 1;
 
+        if (cardData.Cards[card].Team != 0 && cardData.Cards[card].Team != playerTeam)
+        {
+            getNewCard();
+        }
+        else if (importantCount < cardData.Cards[card].Require && cardData.Cards[card].Require > 0)
+        {
+            getNewCard();
+        }
     }
-   
-    bool checkDialogue() 
+
+    bool checkDialogue()
     {
         if (speechCounter < dialogueAmont)
         {
             AudioPlayer.playSound(0);
             textbox.updateText(speech[speechCounter]);
-            speechCounter++;           
+            speechCounter++;
             return false;
         }
         else
@@ -132,55 +178,56 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public int cardAmount;
-    public int deckAmount;
-    bool checkDeck() 
+    bool checkCard()
     {
-        deckAmount = cardData.DeckAmount;
-        cardAmount = cardData.Decks[deck].CardAmount;
-        if (deck < deckAmount)
+        if (card < cardData.CardAmount)
         {
-            if (card < cardAmount)
+            return true;
+        }
+        else
+        {
+            if (deck < playableDeck )
             {
-                return true;
+                deck++;
+                cardData = JsonUtility.FromJson<CardData>(AllCardData[deck].text);
+                importantCount = 0;
             }
             else
             {
-                deck++;
-                card = -1;
-                getNewCard();          
-                return false;
+                Manager.Instance.endStatus = 0;
             }
-        }
-        else { 
-            newGame();
             return false;
         }
     }
 
     void checkEnd()
     {
-        if (Manager.Instance.endStatus != 0)
+        if (Manager.Instance.endStatus != -1)
         {
-            UnityEngine.Debug.Log("End" + Manager.Instance.endStatus);
+            Main.SetActive(false);
+            EndScreen.SetActive(true);
+            EndScreen.GetComponent<EndScreen>().updateEnd(Manager.Instance.endStatus);
         }
     }
 
     public void newGame()
     {
         Main.SetActive(true);
+        EndScreen.SetActive(false);
+        Manager.Instance.endStatus = -1;
         // Main.transform.Find("Card").gameObject.SetActive(true);
-        deck = 0;
         card = 0;
         speechCounter = 0;
+        name = cardData.Cards[card].Name;
+        characterName.updateText(name);
         
-        speech = cardData.Decks[deck].Cards[card].Speech;      
-        dialogueAmont = arrayCount(speech);      
+        speech = cardData.Cards[card].Speech;
+        dialogueAmont = arrayCount(speech);
         textbox.updateText(speech[speechCounter]);
 
         speechCounter++;
 
-        spriteIndex = cardData.Decks[deck].Cards[card].Picture;
+        spriteIndex = cardData.Cards[card].Picture;
         cardObject.ChangeSprite(spriteIndex);
 
         textbox.newGame();
@@ -197,40 +244,43 @@ public class GameHandler : MonoBehaviour
     }
 
     //count child in array
-    int arrayCount(string[] speeches) {
+    int arrayCount(string[] speeches)
+    {
         int c = 0;
         foreach (string i in speeches)
         {
             c++;
         }
+
         return c;
     }
 
-    public TextAsset AllCardData;
+    public TextAsset[] AllCardData;
+
     [Serializable]
     private class CardData
-    {
-        public int DeckAmount;
-        public List<MyDecks> Decks;
-    }
-    [Serializable]
-    private class MyDecks
     {
         public int CardAmount;
         public List<MyCard> Cards;
     }
+
     [Serializable]
     private class MyCard
     {
+        public int Team;
+        public int Require;
+        public string Name;
         public int Picture;
         public string[] Speech;
         public List<MyDecision> Decisions;
-       
     }
+
     [Serializable]
     private class MyDecision
     {
         public string SwipeText;
         public int[] Outcome;
-    } 
+        public int Important;
+        public int Skip;
+    }
 }
